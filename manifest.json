@@ -6,7 +6,7 @@
   "version": "1.0",
   "options_page": "options.html",
   "background": {
-    "scripts": ["jquery-1.11.1.min.js","how_did_i_do.js"],
+    "scripts": ["lib/jquery-1.11.1.min.js","js/howdidido.js"],
     "persistent": false
   },
   "permissions": [

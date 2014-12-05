@@ -1,0 +1,5 @@
+
+# Ignore compiles javascript files
+js/*
+.idea
+.idea/*
