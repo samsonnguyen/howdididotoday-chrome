@@ -54,10 +54,26 @@ class HowDidIDoToday.OptionsUI
             $('#api-token-input').val @options.apiToken
 
 class HowDidIDoToday.LogService
+    HOWDIDIDOTODAY_URL = 'http://localhost:3000'
+
     constructor: () ->
         @options = new HowDidIDoToday.Options () =>
             console.log 'HowDidIDoToday logging-service is ready'
             chrome.webNavigation.onCompleted.addListener(@sendDataToHost)
 
-    sendDataToHost: (details) ->
+    sendDataToHost: (details) =>
+        $.ajax({
+            type: "POST"
+            url: HOWDIDIDOTODAY_URL + '/api/user_entries.json'
+            data: @getData(details)
+#            success: success
+            dataType: 'json'
+
+            beforeSend: (request) =>
+                request.setRequestHeader 'X-Api-Token', @options.apiToken
+                request.setRequestHeader 'X-User-Email', @options.email
+        });
+
+    getData: (details) ->
         console.log(details.url)
+        {"url": details.url}
