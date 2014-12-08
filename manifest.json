@@ -11,6 +11,8 @@
   },
   "permissions": [
     "storage",
-    "webNavigation"
+    "webNavigation",
+    "http://localhost:3000/",
+    "http://howdidido.today/"
   ]
 }
